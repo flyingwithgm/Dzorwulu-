@@ -1,0 +1,2549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BARBERS @ DZORWULU - Premium Experience</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --white: #ffffff;
+            --ash-light: #f2f2f2;
+            --ash-medium: #cccccc;
+            --ash-dark: #333333;
+            --black: #000000;
+            --primary: #d4af37;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+            color: var(--ash-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--black);
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Container and Utility Classes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--black);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .btn:hover {
+            background-color: var(--ash-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        .btn-primary:hover {
+            background-color: #c19d2f;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--black);
+        }
+        /* Header and Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--black);
+        }
+        .logo span {
+            color: var(--primary);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+        }
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--black);
+            transition: var(--transition);
+        }
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--black);
+        }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504608526684-320a90d80d21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        /* Services Section */
+        .services {
+            background-color: var(--ash-light);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 30px 20px;
+            cursor: pointer;
+            position: relative;
+            transform: translateY(0);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--black);
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        .service-card:hover .service-icon {
+            transform: rotate(10deg) scale(1.1);
+            color: var(--primary);
+        }
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .service-card:hover h3 {
+            color: var(--primary);
+        }
+        .service-card p {
+            color: var(--ash-dark);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .service-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            transform: scale(0.8);
+        }
+        .service-card:hover .service-preview {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .service-preview h4 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .service-preview p {
+            color: var(--white);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        .view-details {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .view-details:hover {
+            background-color: #c19d2f;
+            transform: scale(1.05);
+        }
+        /* Service Detail Modal */
+        .service-detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-hover);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--ash-dark);
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        .close-modal:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        .modal-header {
+            padding: 30px;
+            background-color: var(--black);
+            color: var(--white);
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+        .modal-header h2 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .service-duration {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .modal-body {
+            padding: 30px;
+        }
+        .service-steps {
+            margin: 30px 0;
+        }
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        .step-number {
+            flex: 0 0 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        .step-content h4 {
+            margin-bottom: 5px;
+            color: var(--black);
+        }
+        .step-content p {
+            color: var(--ash-dark);
+            margin-bottom: 0;
+        }
+        .service-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .gallery-item {
+            height: 150px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        /* Availability Checker */
+        .availability-checker {
+            background-color: var(--ash-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .availability-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .availability-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .availability-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 10px;
+        }
+        .availability-form input,
+        .availability-form select,
+        .availability-form button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .availability-form button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .availability-form button:hover {
+            background-color: #c19d2f;
+        }
+        .availability-results {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+        }
+        .time-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .time-slot {
+            padding: 8px 15px;
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .time-slot.available {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .time-slot.available:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        .time-slot.booked {
+            background-color: #f8f8f8;
+            color: #999;
+            cursor: not-allowed;
+        }
+        /* Service Customizer */
+        .service-customizer {
+            background-color: var(--ash-light);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .customizer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--black);
+            display: flex;
+            align-items: center;
+        }
+        .customizer-title i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        .custom-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .custom-option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: var(--white);
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: var(--transition);
+        }
+        .custom-option:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+        .custom-option input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: var(--primary);
+        }
+        .option-details {
+            flex: 1;
+        }
+        .option-name {
+            font-weight: 600;
+            color: var(--black);
+        }
+        .option-price {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .option-desc {
+            font-size: 0.8rem;
+            color: var(--ash-dark);
+            margin-top: 3px;
+        }
+        .barber-selection {
+            margin-top: 20px;
+        }
+        .barber-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .barber-card {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--white);
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: var(--transition);
+        }
+        .barber-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        .barber-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 10px;
+            border: 3px solid var(--primary);
+        }
+        .barber-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .barber-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .barber-specialty {
+            font-size: 0.8rem;
+            color: var(--ash-dark);
+            margin-bottom: 10px;
+        }
+        .barber-rating {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 50px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        .gallery-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .gallery-category {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        /* Booking Section */
+        .booking {
+            background-color: var(--black);
+            color: var(--white);
+        }
+        .booking .section-title {
+            color: var(--white);
+        }
+        .booking-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .booking-info {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .booking-info h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .booking-info p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .contact-info i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+        .booking-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: var(--ash-dark);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--ash-dark);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        .submit-btn:hover {
+            background-color: #c19d2f;
+        }
+        .error {
+            border: 1px solid #e74c3c !important;
+        }
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+        /* Selected Service Preview */
+        .selected-service-preview {
+            background-color: var(--ash-light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .selected-service-preview.active {
+            display: block;
+        }
+        .selected-service-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .selected-service-image {
+            flex: 0 0 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .selected-service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .selected-service-details h4 {
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+        .selected-service-details p {
+            margin-bottom: 10px;
+            color: var(--ash-dark);
+        }
+        .selected-service-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .remove-selection {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+        /* Service Specific Questions */
+        .service-specific-questions {
+            background-color: var(--ash-light);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+        .service-specific-questions.active {
+            display: block;
+        }
+        .question-group {
+            margin-bottom: 15px;
+        }
+        .question-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--black);
+        }
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .file-upload input[type="file"] {
+            opacity: 0;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+        }
+        .file-upload-label {
+            padding: 10px 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .file-name {
+            font-size: 0.8rem;
+            color: var(--ash-dark);
+            margin-left: 10px;
+        }
+        /* Package Builder */
+        .package-builder {
+            background-color: var(--ash-light);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .package-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--black);
+            text-align: center;
+        }
+        .package-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .package-option {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .package-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .package-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        .package-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+        .package-services {
+            font-size: 0.9rem;
+            color: var(--ash-dark);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .package-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .package-savings {
+            font-size: 0.8rem;
+            color: #e74c3c;
+            margin-top: 5px;
+        }
+        .custom-package {
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .custom-package:hover {
+            border-color: var(--primary);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+        .custom-package i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .custom-package p {
+            color: var(--ash-dark);
+            margin-bottom: 0;
+        }
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--ash-light);
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        .testimonial {
+            min-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .testimonial-content {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .testimonial-content p {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 20px;
+        }
+        .testimonial-content p:before,
+        .testimonial-content p:after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--ash-medium);
+            position: absolute;
+            opacity: 0.5;
+        }
+        .testimonial-content p:before {
+            top: -10px;
+            left: 0;
+        }
+        .testimonial-content p:after {
+            bottom: -20px;
+            right: 0;
+        }
+        .client-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .client-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 3px solid var(--black);
+        }
+        .client-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .client-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .client-role {
+            color: var(--ash-dark);
+            font-size: 0.9rem;
+        }
+        .slider-controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--ash-medium);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .dot.active {
+            background-color: var(--black);
+            transform: scale(1.2);
+        }
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        .contact-info-box {
+            background-color: var(--ash-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .contact-info-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--black);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        .contact-text h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--white);
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background-color: var(--white);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            nav ul.show {
+                display: flex;
+            }
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .section-title:after {
+                width: 60px;
+            }
+            .booking-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .booking-form {
+                order: -1;
+            }
+            .selected-service-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .selected-service-image {
+                flex: 0 0 150px;
+                margin: 0 auto;
+            }
+            .availability-form {
+                grid-template-columns: 1fr auto;
+            }
+            .service-steps {
+                margin: 20px 0;
+            }
+            .step {
+                flex-direction: column;
+            }
+            .step-number {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            .service-gallery {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                margin: 20px;
+            }
+        }
+        @media (max-width: 576px) {
+            .section {
+                padding: 40px 0;
+            }
+            .container {
+                width: 95%;
+            }
+            .hero {
+                height: 80vh;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            .availability-form {
+                grid-template-columns: 1fr;
+            }
+            .availability-form button {
+                width: 100%;
+            }
+            .time-slots {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.jpg" alt="THE BARBERS @ DZORWULU Logo">
+                <h1>THE<span>BARBERS</span></h1>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#booking">Book Now</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Sharp Cuts, Clean Lines</h2>
+            <p>Experience the finest barbering tradition with our expert stylists and premium grooming products.</p>
+            <a href="#booking" class="btn">Book an Appointment</a>
+        </div>
+    </section>
+    <!-- SERVICES SECTION -->
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in" data-service="haircut">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Haircut" alt="Haircut Icon">
+                    </div>
+                    <h3>Scissor Cut</h3>
+                    <p>Precision cuts tailored to your style and face shape using premium tools and products.</p>
+                    <div class="price">$25</div>
+                    <div class="service-badge">Most Popular</div>
+                    <div class="service-preview">
+                        <h4>Scissor Cut</h4>
+                        <p>Expert styling with personalized consultation</p>
+                        <button class="view-details" data-service="haircut">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="beard">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Beard+Trim" alt="Beard Trim Icon">
+                    </div>
+                    <h3>Beard Trim</h3>
+                    <p>Expert shaping and detailing to enhance your facial hair and complement your features.</p>
+                    <div class="price">$18</div>
+                    <div class="service-badge">Popular</div>
+                    <div class="service-preview">
+                        <h4>Beard Trim & Shape</h4>
+                        <p>Professional grooming for a sharp, clean look</p>
+                        <button class="view-details" data-service="beard">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="dye">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Hair+Dye" alt="Hair Dye Icon">
+                    </div>
+                    <h3>Hair Colouring</h3>
+                    <p>Professional coloring using high-quality, gentle formulas for vibrant, long-lasting results.</p>
+                    <div class="price">$45</div>
+                    <div class="service-badge">Premium</div>
+                    <div class="service-preview">
+                        <h4>Hair Coloring</h4>
+                        <p>Premium hair dye with expert application</p>
+                        <button class="view-details" data-service="dye">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="shave">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Shave" alt="Shave Icon">
+                    </div>
+                    <h3>Hot Towel Shave</h3>
+                    <p>Luxurious traditional shave with hot towels, premium lather, and soothing aftercare.</p>
+                    <div class="price">$35</div>
+                    <div class="service-badge">Luxury</div>
+                    <div class="service-preview">
+                        <h4>Hot Towel Shave</h4>
+                        <p>Ultimate relaxation with traditional techniques</p>
+                        <button class="view-details" data-service="shave">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="facial">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Facial" alt="Facial Icon">
+                    </div>
+                    <h3>Facial Treatment</h3>
+                    <p>Deep cleansing and rejuvenation treatment to refresh and revitalize your skin.</p>
+                    <div class="price">$40</div>
+                    <div class="service-badge">Wellness</div>
+                    <div class="service-preview">
+                        <h4>Facial Treatment</h4>
+                        <p>Deep cleansing for refreshed, healthy skin</p>
+                        <button class="view-details" data-service="facial">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="complete">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Complete" alt="Complete Grooming Icon">
+                    </div>
+                    <h3>Complete Grooming</h3>
+                    <p>Full service package including haircut, beard trim, hot towel shave, and facial.</p>
+                    <div class="price">$75</div>
+                    <div class="service-badge">Best Value</div>
+                    <div class="service-preview">
+                        <h4>Complete Grooming</h4>
+                        <p>The ultimate grooming experience</p>
+                        <button class="view-details" data-service="complete">View Details</button>
+                    </div>
+                </div>
+                <!-- New Services -->
+                <div class="service-card fade-in" data-service="head-shave">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Head+Shave" alt="Head Shave Icon">
+                    </div>
+                    <h3>Head Shave</h3>
+                    <p>Professional head shaving with precision and care, suitable for all hair types.</p>
+                    <div class="price">$30</div>
+                    <div class="service-badge">Special</div>
+                    <div class="service-preview">
+                        <h4>Head Shave</h4>
+                        <p>Smooth, clean shave for a fresh look</p>
+                        <button class="view-details" data-service="head-shave">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="hair-shapeup">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Hair+Shapeup" alt="Hair Shapeup Icon">
+                    </div>
+                    <h3>Hair Shape-up</h3>
+                    <p>Complete styling session focusing on hair shape and definition.</p>
+                    <div class="price">$35</div>
+                    <div class="service-badge">Styling</div>
+                    <div class="service-preview">
+                        <h4>Hair Shape-up</h4>
+                        <p>Enhance your hair's natural form and style</p>
+                        <button class="view-details" data-service="hair-shapeup">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="curly-hair">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Curly+Hair" alt="Curly Hair Icon">
+                    </div>
+                    <h3>Curly Hair Care</h3>
+                    <p>Specialized care for curly hair including styling and maintenance.</p>
+                    <div class="price">$40</div>
+                    <div class="service-badge">Specialized</div>
+                    <div class="service-preview">
+                        <h4>Curly Hair Care</h4>
+                        <p>Expert handling of curly textures</p>
+                        <button class="view-details" data-service="curly-hair">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="beard-conditioning">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Beard+Conditioning" alt="Beard Conditioning Icon">
+                    </div>
+                    <h3>Beard Conditioning</h3>
+                    <p>Nourishing treatment to keep your beard soft, manageable, and healthy.</p>
+                    <div class="price">$20</div>
+                    <div class="service-badge">Care</div>
+                    <div class="service-preview">
+                        <h4>Beard Conditioning</h4>
+                        <p>Deep conditioning for a healthier beard</p>
+                        <button class="view-details" data-service="beard-conditioning">View Details</button>
+                    </div>
+                </div>
+                <div class="service-card fade-in" data-service="long-haircut">
+                    <div class="service-icon">
+                        <img src="https://placehold.co/50x50?text=Long+Haircut" alt="Long Haircut Icon">
+                    </div>
+                    <h3>Long Haircut</h3>
+                    <p>Specialized cutting techniques for longer hair lengths.</p>
+                    <div class="price">$35</div>
+                    <div class="service-badge">Special</div>
+                    <div class="service-preview">
+                        <h4>Long Haircut</h4>
+                        <p>Style and maintain long hair</p>
+                        <button class="view-details" data-service="long-haircut">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- PACKAGE BUILDER SECTION -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Build Your Perfect Package</h2>
+            <div class="package-builder fade-in">
+                <h3 class="package-title">Create Your Custom Grooming Experience</h3>
+                <div class="package-options">
+                    <div class="package-option" data-package="basic">
+                        <div class="package-name">Basic Grooming</div>
+                        <div class="package-services">Scissor Cut + Beard Trim</div>
+                        <div class="package-price">$40</div>
+                        <div class="package-savings">Save $3 vs. individual services</div>
+                    </div>
+                    <div class="package-option" data-package="premium">
+                        <div class="package-name">Premium Package</div>
+                        <div class="package-services">Scissor Cut + Beard Trim + Hot Towel Shave</div>
+                        <div class="package-price">$65</div>
+                        <div class="package-savings">Save $10 vs. individual services</div>
+                    </div>
+                    <div class="package-option" data-package="ultimate">
+                        <div class="package-name">Ultimate Experience</div>
+                        <div class="package-services">Complete Grooming + Scalp Massage</div>
+                        <div class="package-price">$90</div>
+                        <div class="package-savings">Save $15 vs. individual services</div>
+                    </div>
+                    <div class="custom-package">
+                        <i class="fas fa-plus-circle"></i>
+                        <p>Build Your Own Package</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- GALLERY SECTION -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">Style Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://placehold.co/300x250?text=Classic+Fade" alt="Classic Fade">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Classic Fade</div>
+                        <div class="gallery-category">Haircut</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://placehold.co/300x250?text=Full+Beard" alt="Full Beard">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Full Beard</div>
+                        <div class="gallery-category">Beard</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://placehold.co/300x250?text=Textured+Crop" alt="Textured Crop">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Textured Crop</div>
+                        <div class="gallery-category">Haircut</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://placehold.co/300x250?text=Balayage" alt="Balayage">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Balayage</div>
+                        <div class="gallery-category">Hair Color</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://placehold.co/300x250?text=Hot+Towel+Shave" alt="Hot Towel Shave">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Hot Towel Shave</div>
+                        <div class="gallery-category">Shaving</div>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://placehold.co/300x250?text=Complete+Grooming" alt="Complete Grooming">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Complete Grooming</div>
+                        <div class="gallery-category">Full Service</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BOOKING SECTION -->
+    <section class="section booking" id="booking">
+        <div class="container">
+            <h2 class="section-title">Book an Appointment</h2>
+            <div class="booking-container">
+                <div class="booking-info fade-in">
+                    <h3>Visit Us</h3>
+                    <p>We're located in the heart of downtown, offering a premium barbering experience in a modern, comfortable setting.</p>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ALYS PLAZA, Infront of Alys Plaza, Odotei Tsui Ave, Accra</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <span>Wednesday – Closed<br>Thursday – 9:00 AM – 8:00 PM<br>Friday – 9:00 AM – 8:00 PM<br>Saturday – 9:00 AM – 8:00 PM<br>Sunday – 2:00 PM – 8:00 PM<br>Monday – 9:00 AM – 8:00 PM<br>Tuesday – 9:00 AM – 8:00 PM</span>
+                    </div>
+                    <div class="availability-checker">
+                        <div class="availability-header">
+                            <div class="availability-title">Check Real-Time Availability</div>
+                            <div class="live-indicator">
+                                <div class="live-dot"></div>
+                                <span>Live</span>
+                            </div>
+                        </div>
+                        <form class="availability-form" id="availability-form">
+                            <input type="date" id="check-date" required>
+                            <select id="check-service" required>
+                                <option value="">Select Service</option>
+                                <option value="haircut">Scissor Cut</option>
+                                <option value="beard">Beard Trim</option>
+                                <option value="dye">Hair Colouring</option>
+                                <option value="shave">Hot Towel Shave</option>
+                                <option value="head-shave">Head Shave</option>
+                                <option value="hair-shapeup">Hair Shape-up</option>
+                                <option value="curly-hair">Curly Hair Care</option>
+                                <option value="beard-conditioning">Beard Conditioning</option>
+                                <option value="long-haircut">Long Haircut</option>
+                            </select>
+                            <button type="submit">Check Availability</button>
+                        </form>
+                        <div class="availability-results" id="availability-results">
+                            <div>Available times for <strong id="result-date">Today</strong>:</div>
+                            <div class="time-slots">
+                                <div class="time-slot available">9:00 AM</div>
+                                <div class="time-slot available">10:00 AM</div>
+                                <div class="time-slot available">11:00 AM</div>
+                                <div class="time-slot booked">12:00 PM</div>
+                                <div class="time-slot available">1:00 PM</div>
+                                <div class="time-slot available">2:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="booking-form" class="booking-form fade-in">
+                    <h3>Schedule Your Visit</h3>
+                    <div class="selected-service-preview" id="selected-service-preview">
+                        <div class="selected-service-content">
+                            <div class="selected-service-image">
+                                <img id="preview-image" src="" alt="Selected service">
+                            </div>
+                            <div class="selected-service-details">
+                                <h4 id="preview-title"></h4>
+                                <p id="preview-description"></p>
+                                <div class="selected-service-price" id="preview-price"></div>
+                            </div>
+                        </div>
+                        <button type="button" class="remove-selection" id="remove-selection">Remove selection</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name">
+                        <div class="error-message" id="name-error">Please enter your full name</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email address">
+                        <div class="error-message" id="email-error">Please enter a valid email address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                        <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="haircut">Scissor Cut - $25</option>
+                            <option value="beard">Beard Trim - $18</option>
+                            <option value="dye">Hair Colouring - $45</option>
+                            <option value="shave">Hot Towel Shave - $35</option>
+                            <option value="facial">Facial Treatment - $40</option>
+                            <option value="complete">Complete Grooming - $75</option>
+                            <option value="head-shave">Head Shave - $30</option>
+                            <option value="hair-shapeup">Hair Shape-up - $35</option>
+                            <option value="curly-hair">Curly Hair Care - $40</option>
+                            <option value="beard-conditioning">Beard Conditioning - $20</option>
+                            <option value="long-haircut">Long Haircut - $35</option>
+                        </select>
+                        <div class="error-message" id="service-error">Please select a service</div>
+                    </div>
+                    <div class="service-customizer">
+                        <div class="customizer-title">
+                            <i class="fas fa-sliders-h"></i>
+                            Customize Your Service
+                        </div>
+                        <div class="custom-options">
+                            <div class="custom-option">
+                                <input type="checkbox" id="scalp-massage" name="extras" value="scalp-massage">
+                                <div class="option-details">
+                                    <div class="option-name">Scalp Massage</div>
+                                    <div class="option-desc">Relaxing massage to improve circulation</div>
+                                    <div class="option-price">+$10</div>
+                                </div>
+                            </div>
+                            <div class="custom-option">
+                                <input type="checkbox" id="premium-products" name="extras" value="premium-products">
+                                <div class="option-details">
+                                    <div class="option-name">Premium Products</div>
+                                    <div class="option-desc">High-end styling products</div>
+                                    <div class="option-price">+$15</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="barber-selection">
+                            <label for="barber">Choose Your Barber:</label>
+                            <div class="barber-grid">
+                                <div class="barber-card" data-barber="alex">
+                                    <div class="barber-img">
+                                        <img src="https://placehold.co/80x80?text=Alex" alt="Alex">
+                                    </div>
+                                    <div class="barber-name">Alex</div>
+                                    <div class="barber-specialty">Haircut Specialist</div>
+                                    <div class="barber-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        (4.5)
+                                    </div>
+                                </div>
+                                <div class="barber-card" data-barber="michael">
+                                    <div class="barber-img">
+                                        <img src="https://placehold.co/80x80?text=Michael" alt="Michael">
+                                    </div>
+                                    <div class="barber-name">Michael</div>
+                                    <div class="barber-specialty">Beard Expert</div>
+                                    <div class="barber-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        (4.0)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-specific-questions" id="haircut-questions">
+                        <h4>Haircut Preferences</h4>
+                        <div class="question-group">
+                            <label>Hair Type:
+                                <select name="hair-type">
+                                    <option value="">Select hair type</option>
+                                    <option value="straight">Straight</option>
+                                    <option value="wavy">Wavy</option>
+                                    <option value="curly">Curly</option>
+                                    <option value="coily">Coily</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="question-group">
+                            <label>Preferred Length:
+                                <select name="length">
+                                    <option value="">Select length</option>
+                                    <option value="short">Short</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="long">Long</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="question-group">
+                            <label>Upload Inspiration Photo:</label>
+                            <div class="file-upload">
+                                <label for="inspiration-photo" class="file-upload-label">
+                                    <i class="fas fa-upload"></i> Choose File
+                                </label>
+                                <input type="file" id="inspiration-photo" name="inspiration" accept="image/*">
+                                <span class="file-name" id="file-name">No file chosen</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date">
+                        <div class="error-message" id="date-error">Please select a date</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <select id="time" name="time">
+                            <option value="">Select a time</option>
+                            <option value="9:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                        </select>
+                        <div class="error-message" id="time-error">Please select a time</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Special Instructions for Barber:</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any specific requests or concerns..."></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="testimonial-slider" id="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content fade-in">
+                        <p>My friend introduced me to the barbers 4 years ago and I have been stuck here because of how the barber makes me look. I always feel good and also gets good compliments anytime I visit the barbers.</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://placehold.co/80x80?text=David" alt="David Slone">
+                            </div>
+                            <div class="client-name">David Slone</div>
+                            <div class="client-role">Regular Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content fade-in">
+                        <p>Great service, took care of me despite a lack of directions and got me looking good despite me choosing a hairstyle I feel less comfortable in! Would definitely recommend to anyone.</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://placehold.co/80x80?text=Noah" alt="Noah">
+                            </div>
+                            <div class="client-name">Noah</div>
+                            <div class="client-role">Regular Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content fade-in">
+                        <p>Good customer service and very spacious</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://placehold.co/80x80?text=Justice" alt="Justice Yankey">
+                            </div>
+                            <div class="client-name">Justice Yankey</div>
+                            <div class="client-role">Regular Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content fade-in">
+                        <p>Clean ambiance and excellent team of professionals</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://placehold.co/80x80?text=Ahmed" alt="Ahmed Ibrahim">
+                            </div>
+                            <div class="client-name">Ahmed Ibrahim</div>
+                            <div class="client-role">Regular Client</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content fade-in">
+                        <p>The haircut was on point. And great customer service too</p>
+                        <div class="client-info">
+                            <div class="client-img">
+                                <img src="https://placehold.co/80x80?text=Emma" alt="Emma Kay">
+                            </div>
+                            <div class="client-name">Emma Kay</div>
+                            <div class="client-role">Regular Client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <div class="slider-dots" id="slider-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                    <span class="dot" data-index="4"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info-box fade-in">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>ALYS PLAZA, Infront of Alys Plaza, Odotei Tsui Ave, Accra</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@thebarbersdzorwulu.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-text">
+                            <h4>Hours</h4>
+                            <p>Wednesday – Closed<br>Thursday – 9:00 AM – 8:00 PM<br>Friday – 9:00 AM – 8:00 PM<br>Saturday – 9:00 AM – 8:00 PM<br>Sunday – 2:00 PM – 8:00 PM<br>Monday – 9:00 AM – 8:00 PM<br>Tuesday – 9:00 AM – 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container fade-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059351124!2d-74.25986548248684!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1619824657493!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER SECTION -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>THE BARBERS @ DZORWULU</h3>
+                    <p>Premium barbering experience with expert stylists and traditional techniques.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Scissor Cut</a></li>
+                        <li><a href="#">Beard Trim</a></li>
+                        <li><a href="#">Hair Colouring</a></li>
+                        <li><a href="#">Hot Towel Shave</a></li>
+                        <li><a href="#">Facial Treatment</a></li>
+                        <li><a href="#">Head Shave</a></li>
+                        <li><a href="#">Hair Shape-up</a></li>
+                        <li><a href="#">Curly Hair Care</a></li>
+                        <li><a href="#">Beard Conditioning</a></li>
+                        <li><a href="#">Long Haircut</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on special offers and grooming tips.</p>
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required>
+                            <button type="submit" class="btn">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; THE BARBERS@DZORWULU | Site by George Nuyekpe
+            </div>
+        </div>
+    </footer>
+    <!-- SERVICE DETAIL MODAL -->
+    <div class="service-detail-modal" id="service-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-service-title">Service Name</h2>
+                <div class="service-duration">Duration: <span id="modal-duration">45 min</span></div>
+            </div>
+            <div class="modal-body">
+                <p id="modal-service-description">Service description goes here.</p>
+                <div class="service-steps">
+                    <h3>What to Expect</h3>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Consultation</h4>
+                            <p>Personalized discussion about your style preferences and hair goals.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Preparation</h4>
+                            <p>Hair washing and conditioning with premium products.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Service</h4>
+                            <p>Expert execution of your chosen service with precision tools.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Finishing</h4>
+                            <p>Styling, product application, and final touches.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-gallery">
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/150x150?text=Before" alt="Before">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/150x150?text=During" alt="During">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://placehold.co/150x150?text=After" alt="After">
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="modal-book-now">Book This Service</button>
+            </div>
+        </div>
+    </div>
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+        // Close mobile menu when clicking links
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animated');
+                }
+            });
+        };
+        fadeInOnScroll();
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Service details data
+        const serviceImages = {
+            haircut: '',
+            beard: '',
+            dye: '',
+            shave: '',
+            facial: '',
+            complete: '',
+            head-shave: '',
+            hair-shapeup: '',
+            curly-hair: '',
+            beard-conditioning: '',
+            long-haircut: ''
+        };
+        const serviceDetails = {
+            haircut: {
+                title: 'Scissor Cut',
+                description: 'Expert styling tailored to your face shape and personal style. Our master barbers use premium tools and techniques to deliver the perfect cut.',
+                duration: '45 min',
+                price: '$25',
+                steps: [
+                    'Personalized consultation',
+                    'Hair washing and conditioning',
+                    'Precision cutting techniques',
+                    'Styling and finishing touches'
+                ]
+            },
+            beard: {
+                title: 'Beard Trim & Shape',
+                description: 'Professional shaping and detailing for a sharp, clean look. We enhance your facial hair to complement your features perfectly.',
+                duration: '30 min',
+                price: '$18',
+                steps: [
+                    'Face and beard analysis',
+                    'Neck line definition',
+                    'Precision trimming',
+                    'Beard oil application'
+                ]
+            },
+            dye: {
+                title: 'Hair Coloring',
+                description: 'Premium hair dye with expert application for vibrant, long-lasting results. We use gentle, high-quality formulas that protect your hair.',
+                duration: '60 min',
+                price: '$45',
+                steps: [
+                    'Color consultation',
+                    'Hair analysis',
+                    'Precise color application',
+                    'Processing and rinsing',
+                    'Conditioning treatment'
+                ]
+            },
+            shave: {
+                title: 'Hot Towel Shave',
+                description: 'Luxurious traditional shave with hot towels, premium lather, and soothing aftercare. The ultimate in facial grooming.',
+                duration: '45 min',
+                price: '$35',
+                steps: [
+                    'Hot towel application',
+                    'Premium lather application',
+                    'Double-pass straight razor shave',
+                    'Cool towel finish',
+                    'Aftershave balm application'
+                ]
+            },
+            facial: {
+                title: 'Facial Treatment',
+                description: 'Deep cleansing and rejuvenation for refreshed, healthy skin. Our facial treatment removes impurities and revitalizes your complexion.',
+                duration: '40 min',
+                price: '$40',
+                steps: [
+                    'Skin analysis',
+                    'Deep cleansing',
+                    'Exfoliation',
+                    'Steam treatment',
+                    'Facial massage',
+                    'Mask application',
+                    'Moisturizing finish'
+                ]
+            },
+            complete: {
+                title: 'Complete Grooming',
+                description: 'The ultimate grooming experience combining haircut, beard trim, hot towel shave, and facial treatment for complete rejuvenation.',
+                duration: '120 min',
+                price: '$75',
+                steps: [
+                    'Complete hair and beard consultation',
+                    'Haircut with precision techniques',
+                    'Beard shaping and detailing',
+                    'Hot towel straight razor shave',
+                    'Revitalizing facial treatment',
+                    'Styling and finishing'
+                ]
+            },
+            head-shave: {
+                title: 'Head Shave',
+                description: 'Professional head shaving with precision and care, suitable for all hair types.',
+                duration: '30 min',
+                price: '$30',
+                steps: [
+                    'Preparation and consultation',
+                    'Shaving with precision tools',
+                    'Post-shave care',
+                    'Final touch-ups'
+                ]
+            },
+            hair-shapeup: {
+                title: 'Hair Shape-up',
+                description: 'Complete styling session focusing on hair shape and definition.',
+                duration: '45 min',
+                price: '$35',
+                steps: [
+                    'Hair analysis',
+                    'Styling consultation',
+                    'Application of styling products',
+                    'Final shaping and finishing'
+                ]
+            },
+            curly-hair: {
+                title: 'Curly Hair Care',
+                description: 'Specialized care for curly hair including styling and maintenance.',
+                duration: '60 min',
+                price: '$40',
+                steps: [
+                    'Curly hair analysis',
+                    'Detangling and conditioning',
+                    'Styling techniques',
+                    'Product application for definition'
+                ]
+            },
+            beard-conditioning: {
+                title: 'Beard Conditioning',
+                description: 'Nourishing treatment to keep your beard soft, manageable, and healthy.',
+                duration: '20 min',
+                price: '$20',
+                steps: [
+                    'Beard cleaning',
+                    'Conditioning application',
+                    'Beard oil treatment',
+                    'Final styling'
+                ]
+            },
+            long-haircut: {
+                title: 'Long Haircut',
+                description: 'Specialized cutting techniques for longer hair lengths.',
+                duration: '60 min',
+                price: '$35',
+                steps: [
+                    'Hair assessment',
+                    'Length-specific cutting',
+                    'Styling and finishing',
+                    'Final touch-ups'
+                ]
+            }
+        };
+        // Service card click handlers
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                updateServicePreview(service);
+                window.scrollTo({
+                    top: document.getElementById('booking').offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // View details button handlers
+        document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const service = this.getAttribute('data-service');
+                openServiceModal(service);
+            });
+        });
+        // Modal functionality
+        const serviceModal = document.getElementById('service-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-service-title');
+        const modalDuration = document.getElementById('modal-duration');
+        const modalDescription = document.getElementById('modal-service-description');
+        const modalBookNow = document.getElementById('modal-book-now');
+        function openServiceModal(service) {
+            const details = serviceDetails[service];
+            modalTitle.textContent = details.title;
+            modalDuration.textContent = details.duration;
+            modalDescription.textContent = details.description;
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                const stepNumber = step.querySelector('.step-number');
+                const stepContent = step.querySelector('.step-content h4');
+                const stepDesc = step.querySelector('.step-content p');
+                if (details.steps[index]) {
+                    stepNumber.textContent = index + 1;
+                    const stepParts = details.steps[index].split(':');
+                    stepContent.textContent = stepParts[0];
+                    stepDesc.textContent = stepParts[1] || '';
+                }
+            });
+            serviceModal.style.display = 'flex';
+        }
+        closeModal.addEventListener('click', () => {
+            serviceModal.style.display = 'none';
+        });
+        serviceModal.addEventListener('click', (e) => {
+            if (e.target === serviceModal) {
+                serviceModal.style.display = 'none';
+            }
+        });
+        // Service preview functionality
+        const selectedServicePreview = document.getElementById('selected-service-preview');
+        const previewImage = document.getElementById('preview-image');
+        const previewTitle = document.getElementById('preview-title');
+        const previewDescription = document.getElementById('preview-description');
+        const previewPrice = document.getElementById('preview-price');
+        const serviceSelect = document.getElementById('service');
+        function updateServicePreview(service) {
+            if (service && serviceImages[service]) {
+                previewImage.src = serviceImages[service];
+                previewImage.alt = serviceDetails[service].title;
+                previewTitle.textContent = serviceDetails[service].title;
+                previewDescription.textContent = serviceDetails[service].description;
+                previewPrice.textContent = serviceDetails[service].price;
+                serviceSelect.value = service;
+                selectedServicePreview.classList.add('active');
+                document.querySelectorAll('.service-specific-questions').forEach(el => {
+                    el.classList.remove('active');
+                });
+                if (service === 'haircut') {
+                    document.getElementById('haircut-questions').classList.add('active');
+                }
+            }
+        }
+        document.getElementById('remove-selection').addEventListener('click', function() {
+            selectedServicePreview.classList.remove('active');
+            serviceSelect.value = '';
+            document.querySelectorAll('.service-specific-questions').forEach(el => {
+                el.classList.remove('active');
+            });
+        });
+        serviceSelect.addEventListener('change', function() {
+            if (this.value) {
+                updateServicePreview(this.value);
+            } else {
+                selectedServicePreview.classList.remove('active');
+                document.querySelectorAll('.service-specific-questions').forEach(el => {
+                    el.classList.remove('active');
+                });
+            }
+        });
+        // File upload handling
+        document.getElementById('inspiration-photo').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+        // Package selection
+        document.querySelectorAll('.package-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.package-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                const packageType = this.getAttribute('data-package');
+                const packageDetails = {
+                    basic: { service: 'haircut', price: '$40' },
+                    premium: { service: 'complete', price: '$65' },
+                    ultimate: { service: 'complete', price: '$90' }
+                };
+                if (packageDetails[packageType]) {
+                    updateServicePreview('complete');
+                    previewTitle.textContent = this.querySelector('.package-name').textContent;
+                    previewDescription.textContent = this.querySelector('.package-services').textContent;
+                    previewPrice.textContent = packageDetails[packageType].price;
+                }
+            });
+        });
+        document.querySelector('.custom-package').addEventListener('click', function() {
+            alert('Custom package builder activated! Select individual services to create your perfect grooming experience.');
+        });
+        // Barber selection
+        document.querySelectorAll('.barber-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.barber-card').forEach(c => {
+                    c.style.borderColor = '#ddd';
+                });
+                this.style.borderColor = 'var(--primary)';
+            });
+        });
+        // Testimonial slider
+        const testimonialSlider = document.getElementById('testimonial-slider');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        const slideWidth = 100;
+        const updateSlider = () => {
+            testimonialSlider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        };
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentSlide = parseInt(dot.getAttribute('data-index'));
+                updateSlider();
+            });
+        });
+        const autoSlide = () => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            updateSlider();
+        };
+        let slideInterval = setInterval(autoSlide, 5000);
+        dots.forEach(dot => {
+            dot.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            dot.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(autoSlide, 5000);
+            });
+        });
+        // Availability checker
+        document.getElementById('availability-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const date = document.getElementById('check-date').value;
+            const service = document.getElementById('check-service').value;
+            if (date && service) {
+                document.getElementById('result-date').textContent = new Date(date).toLocaleDateString();
+                document.getElementById('availability-results').style.display = 'block';
+            }
+        });
+        // Form validation
+        const bookingForm = document.getElementById('booking-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const dateInput = document.getElementById('date');
+        const timeSelect = document.getElementById('time');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const phoneError = document.getElementById('phone-error');
+        const serviceError = document.getElementById('service-error');
+        const dateError = document.getElementById('date-error');
+        const timeError = document.getElementById('time-error');
+        const validateName = () => {
+            const nameValue = nameInput.value.trim();
+            if (nameValue === '' || nameValue.length < 2) {
+                nameInput.classList.add('error');
+                nameError.style.display = 'block';
+                return false;
+            } else {
+                nameInput.classList.remove('error');
+                nameError.style.display = 'none';
+                return true;
+            }
+        };
+        const validateEmail = () => {
+            const emailValue = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailValue)) {
+                emailInput.classList.add('error');
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailInput.classList.remove('error');
+                emailError.style.display = 'none';
+                return true;
+            }
+        };
+        const validatePhone = () => {
+            const phoneValue = phoneInput.value.trim();
+            const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if (!phoneRegex.test(phoneValue)) {
+                phoneInput.classList.add('error');
+                phoneError.style.display = 'block';
+                return false;
+            } else {
+                phoneInput.classList.remove('error');
+                phoneError.style.display = 'none';
+                return true;
+            }
+        };
+        const validateService = () => {
+            if (serviceSelect.value === '') {
+                serviceSelect.classList.add('error');
+                serviceError.style.display = 'block';
+                return false;
+            } else {
+                serviceSelect.classList.remove('error');
+                serviceError.style.display = 'none';
+                return true;
+            }
+        };
+        const validateDate = () => {
+            if (dateInput.value === '') {
+                dateInput.classList.add('error');
+                dateError.style.display = 'block';
+                return false;
+            } else {
+                dateInput.classList.remove('error');
+                dateError.style.display = 'none';
+                return true;
+            }
+        };
+        const validateTime = () => {
+            if (timeSelect.value === '') {
+                timeSelect.classList.add('error');
+                timeError.style.display = 'block';
+                return false;
+            } else {
+                timeSelect.classList.remove('error');
+                timeError.style.display = 'none';
+                return true;
+            }
+        };
+        // Set minimum date for forms
+        const today = new Date();
+        const dateString = today.getFullYear() + '-' + 
+            String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+            String(today.getDate()).padStart(2, '0');
+        document.getElementById('check-date').setAttribute('min', dateString);
+        dateInput.setAttribute('min', dateString);
+        // Form submission
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isPhoneValid = validatePhone();
+            const isServiceValid = validateService();
+            const isDateValid = validateDate();
+            const isTimeValid = validateTime();
+            if (isNameValid && isEmailValid && isPhoneValid && isServiceValid && isDateValid && isTimeValid) {
+                const selectedService = serviceSelect.value;
+                const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
+                const barber = document.querySelector('.barber-card[style*="border-color: var(--primary)"]')?.getAttribute('data-barber') || 'Any available barber';
+                const extras = [];
+                if (document.getElementById('scalp-massage').checked) extras.push('Scalp Massage');
+                if (document.getElementById('premium-products').checked) extras.push('Premium Products');
+                let confirmationMessage = `Thank you for your booking!
+`;
+                confirmationMessage += `Service: ${serviceText}
+`;
+                if (extras.length > 0) {
+                    confirmationMessage += `Extras: ${extras.join(', ')}
+`;
+                }
+                confirmationMessage += `Barber: ${barber}
+`;
+                confirmationMessage += `Date: ${dateInput.value}
+`;
+                confirmationMessage += `Time: ${timeSelect.value}
+`;
+                if (document.getElementById('notes').value) {
+                    confirmationMessage += `Notes: ${document.getElementById('notes').value}
+`;
+                }
+                confirmationMessage += `
+We will contact you to confirm your appointment.`;
+                alert(confirmationMessage);
+                bookingForm.reset();
+                selectedServicePreview.classList.remove('active');
+                document.querySelectorAll('.service-specific-questions').forEach(el => {
+                    el.classList.remove('active');
+                });
+                document.querySelectorAll('.barber-card').forEach(card => {
+                    card.style.borderColor = '#ddd';
+                });
+            }
+        });
+        // Input validation on blur
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        phoneInput.addEventListener('blur', validatePhone);
+        serviceSelect.addEventListener('change', validateService);
+        dateInput.addEventListener('change', validateDate);
+        timeSelect.addEventListener('change', validateTime);
+        // Newsletter subscription
+        const newsletterForm = document.getElementById('newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                newsletterForm.reset();
+            }
+        });
+        // Modal book now button
+        modalBookNow.addEventListener('click', () => {
+            serviceModal.style.display = 'none';
+            window.scrollTo({
+                top: document.getElementById('booking').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
