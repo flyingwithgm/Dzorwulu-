@@ -169,17 +169,26 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/000000/FFFFFF?text=THE+BARBERS+@DZORWULU') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            padding-top: 80px;
         }
         .hero h2 {
             font-size: 3.5rem;
@@ -394,12 +403,12 @@
         }
         .service-gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 15px;
             margin: 30px 0;
         }
         .gallery-item {
-            height: 150px;
+            height: 300px;
             overflow: hidden;
             border-radius: 8px;
             position: relative;
@@ -1262,45 +1271,6 @@
                 justify-content: center;
             }
         }
-        .hero {
-  position: relative;
-  height: 100vh; /* full screen */
-  overflow: hidden;
-}
-
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* makes it cover like a background */
-  z-index: -1; /* sends it behind the text */
-}
-.hero {
-  position: relative;
-  height: 100vh; /* full screen */
-  overflow: hidden;
-}
-
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* makes it cover like a background */
-  z-index: -1; /* sends it behind the text */
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  color: white;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-}
     </style>
 </head>
 <body>
@@ -1308,6 +1278,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
+                <img src="logo.jpg" alt="THE BARBERS @ DZORWULU Logo">
                 <h1>THE<span>BARBERS</span></h1>
             </div>
             <nav>
@@ -1325,18 +1296,16 @@
         </div>
     </header>
     <!-- HERO SECTION -->
-    <!-- HERO SECTION -->
-<section class="hero" id="home">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="hero-video(1)(1).mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <div class="container hero-content">
-    <h2>Sharp Cuts, Clean Lines</h2>
-    <p>Experience the finest barbering tradition with our expert stylists and premium grooming products.</p>
-  </div>
-</section>
+    <section class="hero" id="home">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="hero-video(1)(1).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="container hero-content">
+            <h2>Sharp Cuts, Clean Lines</h2>
+            <p>Experience the finest barbering tradition with our expert stylists and premium grooming products.</p>
+        </div>
+    </section>
     <!-- SERVICES SECTION -->
     <section class="section services" id="services">
         <div class="container">
@@ -1936,13 +1905,7 @@
                 </div>
                 <div class="service-gallery">
                     <div class="gallery-item">
-                        <img src="" alt="Before">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="" alt="During">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="" alt="After">
+                        <img src="https://placehold.co/400x300/000000/FFFFFF?text=Service+Image" alt="Service Image">
                     </div>
                 </div>
                 <button class="btn btn-primary" id="modal-book-now">Book This Service</button>
@@ -2153,6 +2116,11 @@
                     stepDesc.textContent = stepParts[1] || '';
                 }
             });
+            // Update the single gallery image
+            const galleryItem = document.querySelector('.service-gallery .gallery-item img');
+            galleryItem.src = serviceImages[service];
+            galleryItem.alt = details.title;
+            
             serviceModal.style.display = 'flex';
         }
         closeModal.addEventListener('click', () => {
